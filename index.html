@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contenedor {
+
+      margin: 20px auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    header.top-bar {
+      background-color: #f2f2f2;
+      font-size: 0.85rem;
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar .left,
+    .top-bar .right {
+      display: flex;
+      gap: 1rem;
+    }
+
+    header.main-header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #0073e6;
+    }
+
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .cart {
+      font-size: 0.9rem;
+    }
+
+    nav.navbar {
+      background-color: #0073e6;
+      padding: 0.75rem 2rem;
+    }
+
+    nav.navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav.navbar ul li a {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    nav.navbar {
+      background-color: #0056a0;
+      padding: 0;
+    }
+
+    nav.navbar ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav.navbar ul li a {
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      display: inline-block;
+    }
+
+    nav.navbar ul li a.activo {
+      background-color: #FFD700;
+      color: #000;
+    }
+
+    .navbar ul li a.activo {
+      background-color: #FFD700;
+      color: #000;
+      padding: 1rem 1rem;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .hero-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      background-image: url('./image\ copy.png');
+      background-repeat: no-repeat;
+      background-color: #ffffff;
+      width: 100%;
+      background-size: cover;
+      background-position-y: -70px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-text .dewalt {
+      color: #0073e6;
+      font-weight: bold;
+    }
+
+    .hero-text .combi {
+      color: #88badd;
+      font-weight: 300;
+    }
+
+    .hero-description {
+      margin-top: 1rem;
+      max-width: 300px;
+      color: #555;
+    }
+
+    .read-more-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #f6c900;
+      color: #000;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+
+    .hero-image img {
+      width: 10cm;
+      height: 8cm;
+      object-fit: contain;
+      filter: brightness(0.95) contrast(1.05);
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+    }
+
+    .featured {
+      border: 1px solid #ddd;
+      padding: 15px;
+      width: 250px;
+      background: white;
+    }
+
+    .featured h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+
+    .featured ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .featured li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .featured img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      object-fit: contain;
+    }
+
+    .featured .info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .featured .name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .featured .price {
+      color: #0a74da;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .featured .price.old {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 12px;
+    }
+
+    .stars {
+      font-size: 12px;
+      color: gold;
+    }
+
+
+    @media (max-width: 300px) {
+      .featured {
+        width: 100%;
+        padding: 10px;
+      }
+
+      .featured li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .featured img {
+        margin-bottom: 5px;
+      }
+    }
+
+    .categories-row {
+      padding: 14px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #f3f3f3;
+      background: transparent;
+      font-family: inherit;
+    }
+
+  
+    .categories-grid {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    .cat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 12px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+      
+      width: calc((100% - 32px) / 3);
+    }
+
+
+    .cat-card figure {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 60px;
+    }
+
+    .cat-card img {
+      max-width: 100%;
+      max-height: 60px;
+      object-fit: contain;
+      display: block;
+    }
+
+
+    .cat-title {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0b5ea6;
+    
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+   
+    .categories-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      color: #8b8b8b;
+      font-size: 13px;
+    }
+
+    .carousel-controls .ctrl {
+      border: 1px solid #ddd;
+      background: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-left: 6px;
+      font-weight: 700;
+      line-height: 28px;
+    }
+
+    @media (max-width: 720px) {
+      .cat-card {
+        width: calc((100% - 16px) / 2);
+      }
+    }
+
+  
+    @media (max-width: 420px) {
+      .categories-grid {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+      
+      }
+
+      .cat-card {
+        flex: 0 0 220px;
+       
+        width: 220px;
+      }
+    }
+
+  
+    @media (max-width: 300px) {
+      .cat-card {
+        flex: 0 0 160px;
+        width: 160px;
+        padding: 10px;
+      }
+
+      .cat-card img {
+        max-height: 48px;
+      }
+
+      .cat-title {
+        font-size: 12px;
+      }
+
+      .categories-meta {
+        font-size: 12px;
+      }
+    }
+    .productos{
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contenedor">
+    <header class="top-bar">
+      <div class="left">
+        <span>Call us: +43 900 512 512</span>
+      </div>
+      <div class="right">
+        <a href="#">Wish List</a>
+        <a href="#">My Account</a>
+        <a href="#">Shopping Cart</a>
+        <a href="#">Checkout</a>
+        <span>US Dollar</span>
+      </div>
+    </header>
+
+    <header class="main-header">
+      <div class="logo">beamstore</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="cart">
+        <span>Shopping cart: 0 item(s) - $0.00</span>
+      </div>
+    </header>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#" class="activo">Home</a></li>
+        <li><a href="#">Desktops</a></li>
+        <li><a href="#">Tablets</a></li>
+        <li><a href="#">Cameras</a></li>
+        <li><a href="#">Software</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Buy this theme</a></li>
+      </ul>
+    </nav>
+    <section class="hero-section">
+      <div class="hero-text">
+        <h1>
+          <span class="dewalt">DEWALT</span><br>
+          <span class="combi">COMBI DRILL</span>
+        </h1>
+        <p class="hero-description">
+          Strong and durable 18V combi with all-metal gearing and chuck for long-lasting toughness.
+        </p>
+        <a href="#" class="read-more-btn">READ MORE</a>
+      </div>
+      <div class="hero-image">
+      </div>
+    </section>
+  </div>
+
+  
+  <div class="productos">
+    <aside class="featured">
+      <h3>Featured</h3>
+      <ul>
+        <li>
+          <img src="./mackbo.png" alt="MacBook">
+          <div class="info">
+            <span class="name">MacBook</span>
+            <span class="price">$589.50</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </li>
+        <li>
+          <img src="./IMG-12496178-removebg-preview.png" alt="iPhone">
+          <div class="info">
+            <span class="name">iPhone</span>
+            <span class="price">$120.66</span>
+            <div class="stars">⭐⭐⭐⭐</div>
+          </div>
+        </li>
+        <li>
+          <img src="./53536-107559-lede-xl-removebg-preview.png" alt="Apple Cinema">
+          <div class="info">
+            <span class="name">Apple Cinema 30"</span>
+            <span class="price old">$110.00</span>
+            <span class="price">$107.75</span>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </li>
+        <li>
+          <img src="./galaxi-removebg-preview.png" alt="Samsung Tab">
+          <div class="info">
+            <span class="name">Samsung Tab</span>
+            <span class="price">$236.99</span>
+            <div class="stars">⭐⭐⭐⭐</div>
+          </div>
+        </li>
+      </ul>
+    </aside>
+      <div class="header">
+  
+
+  </div>
+
+  <section class="categories-row">
+    <div class="categories-grid">
+      <a href="#" class="cat-card">
+        <figure>
+          <img
+            src="./pngtree-high-quality-metal-radiator-with-connected-pipes-and-durable-construction-ideal-png-image_14163650-removebg-preview.png"
+            alt="Heating & Pipes">
+        </figure>
+        <div class="cat-title">HEATING &amp; PIPES</div>
+      </a>
+
+      <a href="#" class="cat-card">
+        <figure>
+          <img src="./toma-removebg-preview.png" alt="Switches & Sockets">
+        </figure>
+        <div class="cat-title">SWITCHES &amp; SOCKETS</div>
+      </a>
+
+      <a href="#" class="cat-card">
+        <figure>
+          <img
+            src="./png-transparent-brick-building-materials-graphy-architectural-engineering-total-seal-llc-browse-and-brick-s-photography-material-wood-removebg-preview.png"
+            alt="Building Material">
+        </figure>
+        <div class="cat-title">BUILDING MATERIAL</div>
+      </a>
+    </div>
+
+    <div class="categories-meta">
+      <div class="filter-label">Filter product</div>
+      <div class="carousel-controls" aria-hidden="true">
+        <button class="ctrl prev">&lt;</button>
+        <button class="ctrl next">&gt;</button>
+      </div>
+    </div>
+
+
+
+  </section>
+  </div>
+
+
+
+
+
+</body>
+
+
+</html>
