@@ -828,40 +828,157 @@
     height: auto;
   }
 
-@media (max-width: 1200px) {
-    .secciones {
-        flex-direction: column;
-    }
+/* RESPONSIVIDAD GENERAL */
 
-    .lateral,
-    .Contenido {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+/* Tablets y pantallas medianas */
+@media (max-width: 992px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
 
-    .productos {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  .buscador {
+    width: 100%;
+  }
 
-    .listado {
-        flex-basis: 45%;
-        margin-bottom: 20px;
-    }
+  .navegador ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .descripcion {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .categorias {
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .productos {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .listado {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+  .informacion {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .main-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .compras-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navegador ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu a {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .descripcion-text h2 {
+    font-size: 28px;
+  }
+
+  .productos .listado {
+    flex-basis: 100%;
+  }
+
+  .logos {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .vinculos {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .enlaces {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .pago {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+
+/* Celulares muy pequeños (300px – 480px) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .logo span {
+    font-size: 18px;
+  }
+
+  .buscador input {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .buscador button {
+    padding: 6px 8px;
+  }
+
+  .descripcion-text h2 {
+    font-size: 22px;
+  }
+
+  .descripcion-text p {
+    font-size: 14px;
+  }
+
+  .boton {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .destacados li {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .listado img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logos img {
+    max-width: 60px;
+  }
 }
 
 
-  
-
-
-
-
-
 </style>
-
-
-
-
 
 </body>
 
